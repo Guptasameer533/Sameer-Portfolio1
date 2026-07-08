@@ -5,7 +5,7 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://portfoliosameer.vercel.app",
   email: "guptasameer533@gmail.com",
   phone: "+91 9305925384",
-  location: "Gurugram / Kota, India",
+  location: "Gurugram, India",
   resumePath: "/Sameer_Gupta_Resume.pdf",
   links: {
     github: "https://github.com/Guptasameer533",
