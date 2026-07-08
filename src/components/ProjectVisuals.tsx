@@ -115,13 +115,13 @@ export function NextFlowVisual() {
   const failed = [...status.values()].includes("failed");
   const finished = step >= frames.length - 2;
   const log = !finished
-    ? `run #${run} — executing…`
+    ? `run #${run}: executing…`
     : failed
-      ? `run #${run} — gemini failed, 2 skipped`
-      : `run #${run} — ${doneCount}/5 nodes ✓`;
+      ? `run #${run}: gemini failed, 2 skipped`
+      : `run #${run}: ${doneCount}/5 nodes ✓`;
 
   return (
-    <WindowFrame title="nextflow — live run" log={log}>
+    <WindowFrame title="nextflow: live run" log={log}>
       <svg viewBox="0 0 328 302" className="w-full" aria-hidden>
         {EDGES.map(([from, to]) => {
           const a = nodeCenter(from);
@@ -177,7 +177,7 @@ export function NextFlowVisual() {
 /* ---------------- KisanMitra: concurrent bids + optimistic lock ---------------- */
 
 const KISAN_STEPS = [
-  { status: "OPEN", color: "#a3947e", left: false, right: false, log: "contract listed — awaiting bids" },
+  { status: "OPEN", color: "#a3947e", left: false, right: false, log: "contract listed, awaiting bids" },
   { status: "BID ₹42/q", color: "#f5a83c", left: true, right: false, log: "farmer placed a bid" },
   { status: "COUNTER ₹45/q", color: "#f5a83c", left: false, right: true, log: "buyer countered" },
   { status: "2 WRITES ⚠", color: "#e2725b", left: true, right: true, log: "concurrent writes detected…" },
@@ -199,7 +199,7 @@ export function KisanMitraVisual() {
   );
 
   return (
-    <WindowFrame title="kisanmitra — negotiation" log={s.log}>
+    <WindowFrame title="kisanmitra: negotiation" log={s.log}>
       <svg viewBox="0 0 328 210" className="w-full" aria-hidden>
         <line x1="92" y1="105" x2="118" y2="105" stroke={s.left ? "#f5a83c" : "#3d3426"} strokeWidth="1.5" strokeDasharray={s.left ? "none" : "4 4"} style={{ transition: "stroke 0.4s" }} />
         <line x1="210" y1="105" x2="236" y2="105" stroke={s.right ? "#f5a83c" : "#3d3426"} strokeWidth="1.5" strokeDasharray={s.right ? "none" : "4 4"} style={{ transition: "stroke 0.4s" }} />
@@ -241,7 +241,7 @@ export function ResourceHubVisual() {
 
   return (
     <WindowFrame
-      title="resource-hub — activity"
+      title="resource-hub: activity"
       log={live ? "900+ active · consistent under concurrent load" : "onboarding students…"}
     >
       <svg viewBox="0 0 328 180" className="w-full" aria-hidden>
@@ -258,7 +258,7 @@ export function ResourceHubVisual() {
               <animate attributeName="opacity" values="1;0.3;1" dur="1.4s" repeatCount="indefinite" />
             </circle>
             <text x={38} y={98} fontFamily="var(--font-geist-mono), monospace" fontSize="11" fill="#a3c293">
-              live — reads & writes in sync
+              live, reads & writes in sync
             </text>
           </g>
         )}

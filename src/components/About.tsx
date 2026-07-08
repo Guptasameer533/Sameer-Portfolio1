@@ -37,7 +37,7 @@ export default function About() {
             <div className="tape rotate-2 hover:rotate-0 transition-transform duration-300 bg-[#f3ecdd] p-3 pb-4 rounded-sm shadow-2xl w-64 sm:w-72">
               <Image
                 src="/sameer.jpg"
-                alt="Sameer Gupta — Software Engineer"
+                alt="Sameer Gupta, Software Engineer"
                 width={963}
                 height={1280}
                 className="object-cover rounded-[2px]"
@@ -67,7 +67,7 @@ export default function About() {
               <p className="hand text-xl mb-2">coordinates</p>
               <p className="font-mono text-sm text-muted">📍 {siteConfig.location}</p>
               <p className="font-mono text-sm text-muted mt-1.5">✉ {siteConfig.email}</p>
-              <p className="hand text-lg mt-3 leading-tight">replies fast — usually same day</p>
+              <p className="hand text-lg mt-3 leading-tight">replies fast, usually same day</p>
             </div>
           </Reveal>
         </div>

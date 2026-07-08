@@ -32,13 +32,13 @@ export const heroStats = [
 
 export const about = {
   paragraphs: [
-    "I'm a software engineer from IIIT Kota (B.Tech, 2026) with two production internships building distributed backend services, concurrent execution engines, and platform reliability tooling. I've shipped features end-to-end — from system design to production debugging — in Python, TypeScript, JavaScript, and C++, across microservices, containerised GCP deployments, and CI/CD pipelines.",
-    "I designed and shipped NextFlow — a live, production LLM workflow orchestrator with a concurrent DAG execution engine — entirely from scratch. I'm a Codeforces Expert (1657) and LeetCode 1842, so my algorithmic foundations are strong and verifiable. I care about correctness, failure modes, and writing code that holds up when things go wrong.",
+    "I'm a software engineer from IIIT Kota (B.Tech, 2026) with two production internships building distributed backend services, concurrent execution engines, and platform reliability tooling. I've shipped features end-to-end, from system design to production debugging, in Python, TypeScript, JavaScript, and C++, across microservices, containerised GCP deployments, and CI/CD pipelines.",
+    "I designed and shipped NextFlow, a live, production LLM workflow orchestrator with a concurrent DAG execution engine, entirely from scratch. I'm a Codeforces Expert (1657) and LeetCode 1842, so my algorithmic foundations are strong and verifiable. I care about correctness, failure modes, and writing code that holds up when things go wrong.",
   ],
   highlights: [
-    { title: "Systems that don't fall over", text: "Fault tolerance, optimistic concurrency, race-condition prevention — designed around specific failure modes." },
+    { title: "Systems that don't fall over", text: "Fault tolerance, optimistic concurrency, race-condition prevention, all designed around specific failure modes." },
     { title: "End-to-end ownership", text: "From system design and APIs to frontend, deployment, monitoring and production debugging." },
-    { title: "Verifiable fundamentals", text: "Codeforces Expert, CodeChef 5★, 500+ problems solved — DSA that shows up in real code." },
+    { title: "Verifiable fundamentals", text: "Codeforces Expert, CodeChef 5★, 500+ problems solved. DSA that shows up in real code." },
   ],
 };
 
@@ -58,9 +58,9 @@ export const experience: Experience[] = [
     period: "Aug 2025 – Present",
     location: "Gurugram, India",
     bullets: [
-      "Built Global Search end-to-end — a sub-100ms P95 latency RESTful microservice with live indexing and a React/TypeScript frontend, serving thousands of concurrent enterprise users on Kubernetes (GCP GKE).",
-      "Reduced invalid API submissions by 80% with a server-side validation pipeline — secure coding practices, unit/integration tests, and data-integrity enforcement across distributed services.",
-      "Improved system reliability by 15%+ — instrumented critical paths with metrics and structured logging on GCP; resolved recurring production incidents via root-cause analysis before user impact.",
+      "Built Global Search end-to-end: a sub-100ms P95 latency RESTful microservice with live indexing and a React/TypeScript frontend, serving thousands of concurrent enterprise users on Kubernetes (GCP GKE).",
+      "Reduced invalid API submissions by 80% with a server-side validation pipeline built on secure coding practices, unit/integration tests, and data-integrity enforcement across distributed services.",
+      "Improved system reliability by 15%+ by instrumenting critical paths with metrics and structured logging on GCP; resolved recurring production incidents via root-cause analysis before user impact.",
       "Built fault-tolerant backend automation pipelines with full test coverage, cutting manual operator toil by 40%.",
     ],
     stack: ["TypeScript", "Node.js", "React", "GCP", "Kubernetes", "Elasticsearch", "CI/CD"],
@@ -71,8 +71,8 @@ export const experience: Experience[] = [
     period: "May 2024 – Jul 2024",
     location: "Remote",
     bullets: [
-      "Built and shipped full-stack features — RESTful APIs with authentication middleware and input validation, plus a React dashboard with unit tests; deployed and iterated on real user feedback.",
-      "Debugged and resolved production defects — traced root causes of data-validation failures and shipped fixes with regression test coverage.",
+      "Built and shipped full-stack features: RESTful APIs with authentication middleware and input validation, plus a React dashboard with unit tests; deployed and iterated on real user feedback.",
+      "Debugged and resolved production defects, tracing root causes of data-validation failures and shipping fixes with regression test coverage.",
     ],
     stack: ["JavaScript", "React", "Node.js", "REST APIs"],
   },
@@ -95,14 +95,14 @@ export const projects: Project[] = [
     name: "NextFlow",
     subtitle: "LLM Workflow Orchestrator",
     badge: "Live in production",
-    note: "my favourite — every line written from scratch",
+    note: "my favourite, every line written from scratch",
     description:
       "A production LLM workflow orchestrator with a concurrent DAG execution engine, designed and built entirely from scratch.",
     points: [
-      "Concurrent distributed execution engine — memoised parallel fan-out, topological DAG traversal, and structured failure propagation across distributed task workers.",
-      "Platform resilience — optimistic concurrency control for multi-tab version conflicts (409 VERSION_CONFLICT), scoped realtime access tokens per run, and SKIPPED propagation for partial failures.",
-      "Real-time canvas UI — React Flow DAG canvas with live node-status via Trigger.dev Realtime, Zustand + zundo undo/redo, and debounced auto-save to Neon Postgres.",
-      "Multi-node pipeline — Gemini multimodal, FFmpeg image processing via Transloadit, with full server-side graph validation (Zod + cycle detection) before any persist.",
+      "Concurrent distributed execution engine: memoised parallel fan-out, topological DAG traversal, and structured failure propagation across distributed task workers.",
+      "Platform resilience through optimistic concurrency control for multi-tab version conflicts (409 VERSION_CONFLICT), scoped realtime access tokens per run, and SKIPPED propagation for partial failures.",
+      "Real-time canvas UI: a React Flow DAG canvas with live node-status via Trigger.dev Realtime, Zustand + zundo undo/redo, and debounced auto-save to Neon Postgres.",
+      "Multi-node pipeline covering Gemini multimodal and FFmpeg image processing via Transloadit, with full server-side graph validation (Zod + cycle detection) before any persist.",
     ],
     stack: ["Next.js", "TypeScript", "React Flow", "Trigger.dev", "PostgreSQL", "Prisma", "Docker", "GCP"],
     live: "https://nextflow-smoky-gamma.vercel.app/dashboard",
@@ -114,10 +114,10 @@ export const projects: Project[] = [
     badge: "SIH 2024 National Finalist",
     note: "defended this one in front of national judges",
     description:
-      "A full-stack platform connecting farmers with agribusinesses through assured contract farming — built for Smart India Hackathon 2024 and defended before national judges.",
+      "A full-stack platform connecting farmers with agribusinesses through assured contract farming, built for Smart India Hackathon 2024 and defended before national judges.",
     points: [
-      "Engineered race-condition prevention for multi-party contract negotiations under concurrent load — transactional writes and optimistic locking on MongoDB.",
-      "Real-time data flows for contract status updates and bidding — RESTful APIs with authentication middleware and MongoDB aggregation pipelines.",
+      "Engineered race-condition prevention for multi-party contract negotiations under concurrent load using transactional writes and optimistic locking on MongoDB.",
+      "Real-time data flows for contract status updates and bidding through RESTful APIs with authentication middleware and MongoDB aggregation pipelines.",
       "Shipped with full unit and acceptance test coverage.",
     ],
     stack: ["Next.js", "Node.js", "Express.js", "MongoDB", "REST APIs"],
@@ -129,10 +129,10 @@ export const projects: Project[] = [
     badge: "900+ active users",
     note: "students at my college still use this daily",
     description:
-      "The primary academic resource platform at IIIT Kota — scaled to 900+ active users on a MySQL and Firebase backend.",
+      "The primary academic resource platform at IIIT Kota, scaled to 900+ active users on a MySQL and Firebase backend.",
     points: [
       "Designed the schema, managed indexing, and traced real-time data-consistency failures under concurrent read/write load via root-cause analysis.",
-      "Shipped an LLM-powered study assistant — diagnosed and resolved post-deployment latency and reliability issues; improved user engagement by 60%.",
+      "Shipped an LLM-powered study assistant, diagnosing and resolving post-deployment latency and reliability issues; improved user engagement by 60%.",
     ],
     stack: ["Node.js", "Express.js", "Firebase", "MySQL", "REST APIs"],
   },
@@ -183,7 +183,7 @@ export const competitiveProgramming: CPPlatform[] = [
 
 export const achievements = [
   {
-    title: "Smart India Hackathon 2024 — National Finalist",
+    title: "Smart India Hackathon 2024: National Finalist",
     text: "Selected among top teams nationally from thousands of submissions. Built and demoed KisanMitra end-to-end to national judges, representing IIIT Kota.",
   },
   {
@@ -196,13 +196,13 @@ export const achievements = [
   },
   {
     title: "President, TechKnow Society",
-    text: "Led a 50-member technical society at IIIT Kota — organised national-level hackathons, workshops, and CP contests; mentored juniors in DSA and development.",
+    text: "Led a 50-member technical society at IIIT Kota, organising national-level hackathons, workshops, and CP contests; mentored juniors in DSA and development.",
   },
 ];
 
 export const education = {
   institute: "Indian Institute of Information Technology, Kota",
-  degree: "B.Tech — Electronics and Communication Engineering",
+  degree: "B.Tech in Electronics and Communication Engineering",
   period: "Nov 2022 – Jun 2026",
   coursework: ["Data Structures & Algorithms", "Operating Systems", "Computer Networks", "Database Systems", "OOP", "Discrete Mathematics"],
 };

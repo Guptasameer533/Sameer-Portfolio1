@@ -8,7 +8,7 @@ export default function Experience() {
       <SectionHeading
         label="real systems, real users"
         title="where i've worked"
-        subtitle="production code, measurable impact — not tutorial projects."
+        subtitle="production code, measurable impact, not tutorial projects."
       />
 
       <div className="relative notebook-line ml-2 sm:ml-4 space-y-12">

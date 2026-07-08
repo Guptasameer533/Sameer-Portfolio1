@@ -37,8 +37,8 @@ export default function Contact() {
       setStatus("error");
       setErrorMsg(
         err instanceof Error && err.message === "not_configured"
-          ? "the mail service isn't wired up yet — email me directly instead:"
-          : "something broke (ironic, i know) — email me directly instead:"
+          ? "the mail service isn't wired up yet, email me directly instead:"
+          : "something broke (ironic, i know), email me directly instead:"
       );
     }
   }
@@ -172,7 +172,7 @@ export default function Contact() {
             </button>
 
             {status === "sent" && (
-              <p className="hand text-xl text-sage">✓ got it! i&apos;ll reply soon — promise.</p>
+              <p className="hand text-xl text-sage">✓ got it! i&apos;ll reply soon, promise.</p>
             )}
             {status === "error" && (
               <p className="text-sm text-rose">

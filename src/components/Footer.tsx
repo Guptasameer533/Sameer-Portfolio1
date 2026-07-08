@@ -12,7 +12,7 @@ export default function Footer() {
         <p className="hand text-2xl mb-2">that&apos;s all, folks.</p>
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
           <p className="text-sm text-muted">
-            designed & built by me — next.js, chai, and a few too many 2am commits. ©{" "}
+            designed & built by me: next.js, chai, and a few too many 2am commits. ©{" "}
             {new Date().getFullYear()}
           </p>
           <div className="flex items-center gap-4">

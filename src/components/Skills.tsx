@@ -8,7 +8,7 @@ export default function Skills() {
       <SectionHeading
         label="the sticker wall"
         title="tools i reach for"
-        subtitle="from C++ in contests to Kubernetes in production — poke a sticker."
+        subtitle="from C++ in contests to Kubernetes in production. poke a sticker."
       />
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

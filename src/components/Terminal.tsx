@@ -10,7 +10,7 @@ import { useAchievements } from "./AchievementSystem";
 type Line = { kind: "in" | "out"; text: string };
 
 const BANNER: Line[] = [
-  { kind: "out", text: "sameer-os v2.0 — type `help` to see what i can do" },
+  { kind: "out", text: "sameer-os v2.0. type `help` to see what i can do" },
   { kind: "out", text: "(psst: two of the seven achievements hide in here)" },
 ];
 
@@ -63,7 +63,7 @@ export default function Terminal() {
         ];
       case "whoami":
         return [
-          "sameer gupta — software engineer.",
+          "sameer gupta, software engineer.",
           "backend & distributed systems, IIIT Kota '26.",
           "currently: product engineer @ shipsy.",
           "likes: solving real world problems, C++, chai.",
@@ -94,14 +94,14 @@ export default function Terminal() {
         return [
           "[sudo] password for recruiter: ********",
           "access granted ✔",
-          `next step: email ${siteConfig.email} — i reply fast.`,
+          `next step: email ${siteConfig.email}, i reply fast.`,
         ];
       case "clear":
         return [];
       case "":
         return [];
       default:
-        return [`command not found: ${cmd} — try \`help\``];
+        return [`command not found: ${cmd}. try \`help\``];
     }
   }
 

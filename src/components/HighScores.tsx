@@ -12,7 +12,7 @@ export default function HighScores() {
       <SectionHeading
         label="500+ problems, mostly in C++"
         title="high scores"
-        subtitle="competitive programming ratings — all public, all verifiable."
+        subtitle="competitive programming ratings, all public, all verifiable."
       />
 
       <Reveal>

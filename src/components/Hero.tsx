@@ -46,7 +46,7 @@ const item = {
 };
 
 const scribbleStats = [
-  { text: "codeforces 1657", note: "expert — top ~10%", rotate: -2 },
+  { text: "codeforces 1657", note: "expert, top ~10%", rotate: -2 },
   { text: "leetcode 1842", note: "contest rated", rotate: 1.5 },
   { text: "codechef 2043", note: "5 stars ★", rotate: -1 },
   { text: "sih 2024", note: "national finalist", rotate: 2 },
@@ -96,7 +96,7 @@ export default function Hero() {
         </motion.p>
 
         <motion.p variants={item} className="mt-6 max-w-2xl text-muted text-base sm:text-lg leading-relaxed">
-          software engineer who likes solving real-world problems — systems under real load, failure
+          software engineer who likes solving real-world problems: systems under real load, failure
           modes, the messy parts. currently a product engineer at{" "}
           <span className="text-foreground font-medium">Shipsy</span>, previously shipped a production{" "}
           <span className="text-foreground font-medium">LLM workflow orchestrator</span> from scratch.
@@ -191,7 +191,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.p variants={item} className="mt-14 hand text-xl text-muted -rotate-1">
-          psst — this site has hidden achievements. try the trophy up top ↗ and the terminal down there ↘
+          psst, this site has hidden achievements. try the trophy up top ↗ and the terminal down there ↘
         </motion.p>
       </motion.div>
     </section>

@@ -28,11 +28,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
     default:
-      "Sameer Gupta — Software Engineer | Backend & Full-Stack Developer",
+      "Sameer Gupta | Software Engineer, Backend & Full-Stack Developer",
     template: "%s | Sameer Gupta",
   },
   description:
-    "Sameer Gupta is a software engineer from IIIT Kota specialising in backend, distributed systems and full-stack development (Next.js, Node.js, TypeScript, Python). Product Engineer at Shipsy, Codeforces Expert (1657), Smart India Hackathon 2024 National Finalist, and builder of NextFlow — a production LLM workflow orchestrator.",
+    "Sameer Gupta is a software engineer from IIIT Kota specialising in backend, distributed systems and full-stack development (Next.js, Node.js, TypeScript, Python). Product Engineer at Shipsy, Codeforces Expert (1657), Smart India Hackathon 2024 National Finalist, and builder of NextFlow, a production LLM workflow orchestrator.",
   keywords: [
     "Sameer Gupta",
     "Sameer Gupta IIIT Kota",
@@ -59,14 +59,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteConfig.url,
-    siteName: "Sameer Gupta — Portfolio",
-    title: "Sameer Gupta — Software Engineer | Backend & Full-Stack Developer",
+    siteName: "Sameer Gupta | Portfolio",
+    title: "Sameer Gupta | Software Engineer, Backend & Full-Stack Developer",
     description:
       "Backend & distributed systems engineer from IIIT Kota. Product Engineer at Shipsy · Codeforces Expert 1657 · SIH 2024 National Finalist · Builder of NextFlow.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sameer Gupta — Software Engineer",
+    title: "Sameer Gupta | Software Engineer",
     description:
       "Backend & distributed systems engineer. Codeforces Expert 1657 · SIH 2024 National Finalist · Builder of NextFlow, a production LLM workflow orchestrator.",
   },
