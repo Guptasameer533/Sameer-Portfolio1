@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# sameer.gupta — portfolio
 
-## Getting Started
+Personal portfolio of **Sameer Gupta** — software engineer, IIIT Kota '26.
+Built with Next.js 15 (App Router), TypeScript, Tailwind CSS v4, and Framer Motion.
 
-First, run the development server:
+## What's inside
+
+- **Warm, hand-crafted design** — serif display type (Fraunces), handwritten annotations (Caveat), polaroid photo, index-card layouts, paper grain.
+- **Gamified** — 7 hidden visitor achievements with unlock toasts + confetti, an interactive terminal (`help`, `sudo hire-me`, …), the konami code, and an arcade-style "high scores" board for CP ratings.
+- **SEO-first** — fully static server-rendered HTML, JSON-LD `Person` structured data, OpenGraph/Twitter cards with a generated OG image, `sitemap.xml`, `robots.txt`, canonical URLs.
+- **Working contact form** — `/api/contact` route that delivers messages via [Resend](https://resend.com).
+
+## Run locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
+npm run build      # production build
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Contact form setup (one-time)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Sign up at [resend.com](https://resend.com) (free tier: 100 emails/day).
+2. Create an API key.
+3. Copy `.env.local.example` → `.env.local` and paste the key. Until then the form
+   falls back gracefully to a "email me directly" message.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deploying (Vercel)
 
-## Learn More
+1. Push this repo to GitHub (`Guptasameer533` account) and import it in Vercel.
+2. Add the env vars from `.env.local.example` in Project → Settings → Environment Variables.
+3. Set `NEXT_PUBLIC_SITE_URL` to the final URL.
 
-To learn more about Next.js, take a look at the following resources:
+## After deploying — SEO checklist
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [ ] Verify the site in [Google Search Console](https://search.google.com/search-console) and submit `sitemap.xml`.
+- [ ] Add the portfolio URL to your GitHub, LinkedIn, LeetCode, Codeforces and CodeChef profiles — these backlinks are what push "Sameer Gupta" queries up.
+- [ ] Keep the LinkedIn profile linking here public.
+- [ ] Test the OG card with [opengraph.xyz](https://www.opengraph.xyz).

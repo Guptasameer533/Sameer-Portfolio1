@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# old reference site
+Sameer-Portfolio1-main 2/
+.DS_Store
+.env*.local
