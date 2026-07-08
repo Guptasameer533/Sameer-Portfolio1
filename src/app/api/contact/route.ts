@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
-import { siteConfig } from "@/lib/data";
 
 const CONTACT_TO = process.env.CONTACT_TO ?? "guptasameer533@gmail.com";
 
@@ -14,31 +13,6 @@ async function sendViaResend(name: string, email: string, message: string, apiKe
     text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
   });
   return !error;
-}
-
-// zero-config fallback — free, no account; needs a one-time email activation
-async function sendViaFormSubmit(name: string, email: string, message: string) {
-  const res = await fetch(`https://formsubmit.co/ajax/${CONTACT_TO}`, {
-    method: "POST",
-    // FormSubmit rejects requests without a web origin
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-      Origin: siteConfig.url,
-      Referer: `${siteConfig.url}/`,
-    },
-    body: JSON.stringify({
-      name,
-      email,
-      message,
-      _subject: `Portfolio message from ${name}`,
-      _template: "table",
-      _captcha: "false",
-    }),
-  });
-  if (!res.ok) return false;
-  const body = await res.json().catch(() => null);
-  return body?.success === true || body?.success === "true";
 }
 
 export async function POST(req: Request) {
@@ -63,11 +37,13 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "invalid_email" }, { status: 400 });
   }
 
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    return NextResponse.json({ error: "not_configured" }, { status: 503 });
+  }
+
   try {
-    const apiKey = process.env.RESEND_API_KEY;
-    const sent = apiKey
-      ? await sendViaResend(name, email, message, apiKey)
-      : await sendViaFormSubmit(name, email, message);
+    const sent = await sendViaResend(name, email, message, apiKey);
     if (!sent) {
       return NextResponse.json({ error: "send_failed" }, { status: 502 });
     }

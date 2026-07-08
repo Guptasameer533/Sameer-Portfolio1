@@ -8,7 +8,7 @@ Built with Next.js 15 (App Router), TypeScript, Tailwind CSS v4, and Framer Moti
 - **Warm, hand-crafted design** — serif display type (Fraunces), handwritten annotations (Caveat), polaroid photo, index-card layouts, paper grain.
 - **Gamified** — 7 hidden visitor achievements with unlock toasts + confetti, an interactive terminal (`help`, `sudo hire-me`, …), the konami code, and an arcade-style "high scores" board for CP ratings.
 - **SEO-first** — fully static server-rendered HTML, JSON-LD `Person` structured data, OpenGraph/Twitter cards with a generated OG image, `sitemap.xml`, `robots.txt`, canonical URLs.
-- **Working contact form** — `/api/contact` delivers messages via [FormSubmit](https://formsubmit.co) (zero config), or [Resend](https://resend.com) if `RESEND_API_KEY` is set.
+- **Working contact form** — `/api/contact` delivers messages via [Resend](https://resend.com). Requires `RESEND_API_KEY`; without it the form shows a graceful "email me directly" fallback instead of failing silently.
 
 ## Run locally
 
@@ -20,12 +20,17 @@ npm run build      # production build
 
 ## Contact form setup (one-time)
 
-The form works without any keys via FormSubmit — just click the **"Activate Form"**
-link FormSubmit sends to guptasameer533@gmail.com after the first submission.
+Sign up at [resend.com](https://resend.com) (free, no card, 100 emails/day), create
+an API key, and set it as `RESEND_API_KEY`:
 
-Optional upgrade to Resend: sign up at [resend.com](https://resend.com), create an
-API key, copy `.env.local.example` → `.env.local` and paste it. When the key is
-present the route uses Resend instead.
+- **Locally**: copy `.env.local.example` → `.env.local` and paste the key.
+- **On Vercel**: `vercel env add RESEND_API_KEY production` (or via the dashboard
+  under Project → Settings → Environment Variables), then redeploy.
+
+FormSubmit was tried first as a zero-signup option but Cloudflare returns a 403
+bot-challenge when it's called from Vercel's serverless IPs, so it can never
+deliver mail in production. Resend is a proper transactional email API and
+works reliably from serverless functions.
 
 ## Deploying (Vercel)
 
