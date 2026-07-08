@@ -2,7 +2,7 @@ import { achievements } from "@/lib/data";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 
-const icons = ["🏆", "🔵", "⭐", "🎤"];
+const icons = ["🏆", "🔵", "🧩", "🎤"];
 
 export default function Trophies() {
   return (

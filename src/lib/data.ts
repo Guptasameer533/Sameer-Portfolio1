@@ -191,8 +191,8 @@ export const achievements = [
     text: "Competitive programming rating placing in the top ~2% of active contestants globally, maintained through consistent contest participation.",
   },
   {
-    title: "CodeChef 5-Star · Max 2043",
-    text: "Five-star rated competitive programmer; 500+ problems solved across platforms, primarily in C++.",
+    title: "LeetCode · Max Rating 1842",
+    text: "Top-rated performance in weekly and biweekly contests, with strong results across graph, DP, and systems-oriented problems.",
   },
   {
     title: "President, TechKnow Society",

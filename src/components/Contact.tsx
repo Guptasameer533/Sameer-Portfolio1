@@ -119,6 +119,8 @@ export default function Contact() {
                 <input
                   id="name"
                   name="name"
+                  type="text"
+                  autoComplete="name"
                   required
                   maxLength={100}
                   placeholder="Jane Recruiter"
@@ -133,6 +135,7 @@ export default function Contact() {
                   id="email"
                   name="email"
                   type="email"
+                  autoComplete="email"
                   required
                   maxLength={200}
                   placeholder="jane@company.com"
@@ -147,6 +150,7 @@ export default function Contact() {
               <textarea
                 id="message"
                 name="message"
+                autoComplete="off"
                 required
                 maxLength={5000}
                 rows={6}
