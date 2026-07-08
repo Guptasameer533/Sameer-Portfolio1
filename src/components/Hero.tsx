@@ -96,8 +96,8 @@ export default function Hero() {
         </motion.p>
 
         <motion.p variants={item} className="mt-6 max-w-2xl text-muted text-base sm:text-lg leading-relaxed">
-          software engineer who likes the messy parts — race conditions, failure modes, systems under
-          real load. currently building logistics tech at{" "}
+          software engineer who likes solving real-world problems — systems under real load, failure
+          modes, the messy parts. currently a product engineer at{" "}
           <span className="text-foreground font-medium">Shipsy</span>, previously shipped a production{" "}
           <span className="text-foreground font-medium">LLM workflow orchestrator</span> from scratch.
           IIIT Kota, class of 2026.

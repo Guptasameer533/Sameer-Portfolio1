@@ -48,7 +48,7 @@ export default function OgImage() {
             fontFamily: "sans-serif",
           }}
         >
-          Product Engineer Intern @ Shipsy · Codeforces Expert 1657 · SIH 2024 National Finalist
+          Product Engineer @ Shipsy · Codeforces Expert 1657 · SIH 2024 National Finalist
         </div>
         <div
           style={{

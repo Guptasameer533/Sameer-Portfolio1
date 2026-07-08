@@ -31,7 +31,7 @@ const LINES: Token[][] = [
   [
     { t: "  currently" },
     { t: ": ", c: "text-muted" },
-    { t: '"global search @ shipsy"', c: "text-sage" },
+    { t: '"Product Engineer @ shipsy"', c: "text-sage" },
     { t: ",", c: "text-muted" },
   ],
   [
@@ -44,7 +44,7 @@ const LINES: Token[][] = [
   [
     { t: "  likes" },
     { t: ": ", c: "text-muted" },
-    { t: '"fixing race conditions"', c: "text-sage" },
+    { t: '"Solving Real World Problems"', c: "text-sage" },
     { t: ",", c: "text-muted" },
   ],
   [

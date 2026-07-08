@@ -54,7 +54,7 @@ export type Experience = {
 export const experience: Experience[] = [
   {
     company: "Shipsy",
-    role: "Product Engineer Intern",
+    role: "Product Engineer",
     period: "Aug 2025 – Present",
     location: "Gurugram, India",
     bullets: [

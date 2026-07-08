@@ -65,8 +65,8 @@ export default function Terminal() {
         return [
           "sameer gupta — software engineer.",
           "backend & distributed systems, IIIT Kota '26.",
-          "currently: product engineer intern @ shipsy.",
-          "likes: race conditions (fixing them), C++, chai.",
+          "currently: product engineer @ shipsy.",
+          "likes: solving real world problems, C++, chai.",
         ];
       case "projects":
         return projects.map(
