@@ -161,7 +161,7 @@ export const competitiveProgramming: CPPlatform[] = [
     platform: "Codeforces",
     rating: "1657",
     tier: "Expert",
-    detail: "Top ~10% of active contestants globally · Div. 1/2 contests",
+    detail: "Top ~2% of active contestants globally · Div. 1/2 contests",
     color: "#3b82f6",
   },
   {
@@ -188,7 +188,7 @@ export const achievements = [
   },
   {
     title: "Codeforces Expert · Max 1657",
-    text: "Competitive programming rating placing in the top ~10% of active contestants globally, maintained through consistent contest participation.",
+    text: "Competitive programming rating placing in the top ~2% of active contestants globally, maintained through consistent contest participation.",
   },
   {
     title: "CodeChef 5-Star · Max 2043",

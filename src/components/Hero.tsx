@@ -46,7 +46,7 @@ const item = {
 };
 
 const scribbleStats = [
-  { text: "codeforces 1657", note: "expert, top ~10%", rotate: -2 },
+  { text: "codeforces 1657", note: "expert, top ~2%", rotate: -2 },
   { text: "leetcode 1842", note: "contest rated", rotate: 1.5 },
   { text: "codechef 2043", note: "5 stars ★", rotate: -1 },
   { text: "sih 2024", note: "national finalist", rotate: 2 },
