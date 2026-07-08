@@ -10,6 +10,7 @@ import {
   type AnchorHTMLAttributes,
   type ReactNode,
 } from "react";
+import { createPortal } from "react-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import confetti from "canvas-confetti";
 import { Trophy, X } from "lucide-react";
@@ -164,6 +165,16 @@ export function TrophyButton() {
   const { unlocked } = useAchievements();
   const [open, setOpen] = useState(false);
 
+  // lock page scroll while the panel is open
+  useEffect(() => {
+    if (!open) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [open]);
+
   return (
     <>
       <button
@@ -178,8 +189,12 @@ export function TrophyButton() {
         </span>
       </button>
 
-      <AnimatePresence>
-        {open && (
+      {/* portal to <body>: the navbar's backdrop-filter creates a containing
+          block that would otherwise trap this fixed overlay at the top */}
+      {typeof document !== "undefined" &&
+        createPortal(
+          <AnimatePresence>
+            {open && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -192,7 +207,7 @@ export function TrophyButton() {
               animate={{ scale: 1, y: 0, rotate: 0 }}
               exit={{ scale: 0.92, y: 16 }}
               onClick={(e) => e.stopPropagation()}
-              className="card w-full max-w-md p-6 relative"
+              className="card w-full max-w-md p-6 relative max-h-[85vh] overflow-y-auto"
             >
               <button
                 onClick={() => setOpen(false)}
@@ -238,8 +253,10 @@ export function TrophyButton() {
               </ul>
             </motion.div>
           </motion.div>
+            )}
+          </AnimatePresence>,
+          document.body
         )}
-      </AnimatePresence>
     </>
   );
 }
