@@ -6,6 +6,7 @@ import { ArrowDown, FileDown, Mail } from "lucide-react";
 import { siteConfig, typingPhrases } from "@/lib/data";
 import { GithubIcon, LinkedinIcon } from "./BrandIcons";
 import { TrackedLink } from "./AchievementSystem";
+import HeroGraph from "./HeroGraph";
 
 function useTypewriter(phrases: string[]) {
   const [text, setText] = useState("");
@@ -74,6 +75,8 @@ export default function Hero() {
         animate="show"
         className="relative mx-auto max-w-6xl px-5 sm:px-8 pt-28 pb-16 w-full"
       >
+        <div className="lg:grid lg:grid-cols-[1fr_auto] lg:gap-14 lg:items-center">
+          <div>
         <motion.p variants={item} className="hand text-2xl sm:text-3xl -rotate-1 mb-4">
           namaste, i&apos;m
         </motion.p>
@@ -148,6 +151,12 @@ export default function Hero() {
             </TrackedLink>
           </div>
         </motion.div>
+          </div>
+
+          <motion.div variants={item} className="hidden lg:block">
+            <HeroGraph />
+          </motion.div>
+        </div>
 
         {/* scribbled sticky-note stats */}
         <motion.div variants={item} className="mt-16 flex flex-wrap gap-4 max-w-3xl">
