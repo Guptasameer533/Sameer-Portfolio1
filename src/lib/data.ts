@@ -147,13 +147,21 @@ export const skillGroups = [
   { title: "Testing & Tools", skills: ["Jest", "Unit / Integration Testing", "Trigger.dev", "Transloadit", "Clerk Auth", "Agile"] },
 ];
 
-export const competitiveProgramming = [
+export type CPPlatform = {
+  platform: string;
+  rating: string;
+  tier: string;
+  detail: string;
+  link?: string;
+  color: string;
+};
+
+export const competitiveProgramming: CPPlatform[] = [
   {
     platform: "Codeforces",
     rating: "1657",
     tier: "Expert",
     detail: "Top ~10% of active contestants globally · Div. 1/2 contests",
-    link: "https://codeforces.com/profile/Guptasameer533",
     color: "#3b82f6",
   },
   {
@@ -169,7 +177,6 @@ export const competitiveProgramming = [
     rating: "2043",
     tier: "5-Star",
     detail: "Cook-Offs and Long Challenges",
-    link: "https://www.codechef.com/users/guptasameer533",
     color: "#a78bfa",
   },
 ];

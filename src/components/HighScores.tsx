@@ -12,7 +12,7 @@ export default function HighScores() {
       <SectionHeading
         label="500+ problems, mostly in C++"
         title="high scores"
-        subtitle="competitive programming ratings — all public, all verifiable. click a row to check."
+        subtitle="competitive programming ratings — all public, all verifiable."
       />
 
       <Reveal>
@@ -28,29 +28,42 @@ export default function HighScores() {
             <span className="text-right">title</span>
           </div>
 
-          {ranked.map((cp, i) => (
-            <a
-              key={cp.platform}
-              href={cp.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="grid grid-cols-[2.5rem_1fr_5rem_auto] gap-x-3 sm:gap-x-6 items-center py-4 border-b border-line/60 group hover:bg-accent-soft transition-colors rounded-sm px-1 -mx-1"
-            >
-              <span className="text-muted">0{i + 1}</span>
-              <span className="font-semibold group-hover:text-accent transition-colors uppercase">
-                {cp.platform}
-              </span>
-              <span className="text-right text-xl sm:text-2xl font-bold" style={{ color: cp.color }}>
-                {cp.rating}
-              </span>
-              <span
-                className="text-right text-xs sm:text-sm"
-                style={{ color: cp.color }}
+          {ranked.map((cp, i) => {
+            const rowClass =
+              "grid grid-cols-[2.5rem_1fr_5rem_auto] gap-x-3 sm:gap-x-6 items-center py-4 border-b border-line/60 group rounded-sm px-1 -mx-1";
+            const cells = (
+              <>
+                <span className="text-muted">0{i + 1}</span>
+                <span className="font-semibold group-hover:text-accent transition-colors uppercase">
+                  {cp.platform}
+                </span>
+                <span className="text-right text-xl sm:text-2xl font-bold" style={{ color: cp.color }}>
+                  {cp.rating}
+                </span>
+                <span
+                  className="text-right text-xs sm:text-sm"
+                  style={{ color: cp.color }}
+                >
+                  {cp.tier.toUpperCase()}
+                </span>
+              </>
+            );
+            return cp.link ? (
+              <a
+                key={cp.platform}
+                href={cp.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`${rowClass} hover:bg-accent-soft transition-colors`}
               >
-                {cp.tier.toUpperCase()}
-              </span>
-            </a>
-          ))}
+                {cells}
+              </a>
+            ) : (
+              <div key={cp.platform} className={rowClass}>
+                {cells}
+              </div>
+            );
+          })}
 
           <p className="mt-8 text-center text-muted text-xs sm:text-sm caret">
             INSERT COIN TO CHALLENGE&nbsp;
