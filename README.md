@@ -8,7 +8,7 @@ Built with Next.js 15 (App Router), TypeScript, Tailwind CSS v4, and Framer Moti
 - **Warm, hand-crafted design** — serif display type (Fraunces), handwritten annotations (Caveat), polaroid photo, index-card layouts, paper grain.
 - **Gamified** — 7 hidden visitor achievements with unlock toasts + confetti, an interactive terminal (`help`, `sudo hire-me`, …), the konami code, and an arcade-style "high scores" board for CP ratings.
 - **SEO-first** — fully static server-rendered HTML, JSON-LD `Person` structured data, OpenGraph/Twitter cards with a generated OG image, `sitemap.xml`, `robots.txt`, canonical URLs.
-- **Working contact form** — `/api/contact` route that delivers messages via [Resend](https://resend.com).
+- **Working contact form** — `/api/contact` delivers messages via [FormSubmit](https://formsubmit.co) (zero config), or [Resend](https://resend.com) if `RESEND_API_KEY` is set.
 
 ## Run locally
 
@@ -20,10 +20,12 @@ npm run build      # production build
 
 ## Contact form setup (one-time)
 
-1. Sign up at [resend.com](https://resend.com) (free tier: 100 emails/day).
-2. Create an API key.
-3. Copy `.env.local.example` → `.env.local` and paste the key. Until then the form
-   falls back gracefully to a "email me directly" message.
+The form works without any keys via FormSubmit — just click the **"Activate Form"**
+link FormSubmit sends to guptasameer533@gmail.com after the first submission.
+
+Optional upgrade to Resend: sign up at [resend.com](https://resend.com), create an
+API key, copy `.env.local.example` → `.env.local` and paste it. When the key is
+present the route uses Resend instead.
 
 ## Deploying (Vercel)
 
