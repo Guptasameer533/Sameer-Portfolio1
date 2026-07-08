@@ -191,7 +191,7 @@ export default function Hero() {
         </motion.div>
 
         <motion.p variants={item} className="mt-14 hand text-xl text-muted -rotate-1">
-          psst — this site has hidden achievements. try the trophy icon up top ↗
+          psst — this site has hidden achievements. try the trophy up top ↗ and the terminal down there ↘
         </motion.p>
       </motion.div>
     </section>

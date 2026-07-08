@@ -1,19 +1,22 @@
 "use client";
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
+import { createPortal } from "react-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { Terminal as TerminalIcon, X } from "lucide-react";
 import { projects, siteConfig } from "@/lib/data";
 import { useAchievements } from "./AchievementSystem";
-import Reveal from "./Reveal";
-import SectionHeading from "./SectionHeading";
 
 type Line = { kind: "in" | "out"; text: string };
 
 const BANNER: Line[] = [
   { kind: "out", text: "sameer-os v2.0 — type `help` to see what i can do" },
+  { kind: "out", text: "(psst: two of the seven achievements hide in here)" },
 ];
 
 export default function Terminal() {
-  const { unlock } = useAchievements();
+  const { unlock, unlocked } = useAchievements();
+  const [open, setOpen] = useState(false);
   const [lines, setLines] = useState<Line[]>(BANNER);
   const [input, setInput] = useState("");
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -21,7 +24,27 @@ export default function Terminal() {
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight });
-  }, [lines]);
+  }, [lines, open]);
+
+  useEffect(() => {
+    if (open) setTimeout(() => inputRef.current?.focus(), 250);
+  }, [open]);
+
+  // ` opens it (unless typing in a field), Esc closes it
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      const el = document.activeElement;
+      const typing = el instanceof HTMLInputElement || el instanceof HTMLTextAreaElement;
+      if (e.key === "`" && !typing) {
+        e.preventDefault();
+        setOpen(true);
+      } else if (e.key === "Escape") {
+        setOpen(false);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
 
   function run(raw: string): string[] {
     const cmd = raw.trim().toLowerCase();
@@ -95,55 +118,96 @@ export default function Terminal() {
     setLines((prev) => [...prev, { kind: "in", text: cmd }, ...out]);
   }
 
+  const discovered = unlocked.includes("terminal-hacker");
+
   return (
-    <section id="terminal" className="mx-auto max-w-6xl px-5 sm:px-8 py-24">
-      <SectionHeading
-        label="for the curious ones"
-        title="poke around"
-        subtitle="a real terminal. two of the seven achievements are hiding in here."
-      />
+    <>
+      {/* floating launcher — visible from anywhere on the page */}
+      <motion.button
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.2, duration: 0.5 }}
+        onClick={() => setOpen((v) => !v)}
+        aria-label="Open terminal"
+        title="terminal (or press `)"
+        className="fixed bottom-5 right-5 z-[70] card card-hover flex items-center gap-2.5 px-4 py-3 shadow-2xl"
+      >
+        {!discovered && (
+          <span className="absolute -top-1 -right-1 flex h-3 w-3">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-60" />
+            <span className="relative inline-flex rounded-full h-3 w-3 bg-accent" />
+          </span>
+        )}
+        <TerminalIcon size={17} className="text-accent" />
+        <span className="hand text-lg leading-none hidden sm:inline">terminal</span>
+      </motion.button>
 
-      <Reveal>
-        <div
-          className="card overflow-hidden max-w-3xl rotate-[0.3deg]"
-          onClick={() => inputRef.current?.focus()}
-        >
-          <div className="flex items-center gap-2 px-4 py-3 border-b border-line bg-background/60">
-            <span className="h-3 w-3 rounded-full bg-rose/80" />
-            <span className="h-3 w-3 rounded-full bg-accent/80" />
-            <span className="h-3 w-3 rounded-full bg-sage/80" />
-            <span className="ml-3 font-mono text-xs text-muted">sameer@portfolio: ~</span>
-          </div>
+      {typeof document !== "undefined" &&
+        createPortal(
+          <AnimatePresence>
+            {open && (
+              <motion.div
+                initial={{ opacity: 0, y: 28, scale: 0.96 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 28, scale: 0.96 }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
+                className="fixed bottom-20 right-5 z-[75] w-[min(580px,calc(100vw-2.5rem))]"
+              >
+                <div className="card overflow-hidden shadow-2xl" onClick={() => inputRef.current?.focus()}>
+                  <div className="flex items-center gap-2 px-4 py-3 border-b border-line bg-background/80">
+                    <span className="h-3 w-3 rounded-full bg-rose/80" />
+                    <span className="h-3 w-3 rounded-full bg-accent/80" />
+                    <span className="h-3 w-3 rounded-full bg-sage/80" />
+                    <span className="ml-3 font-mono text-xs text-muted">sameer@portfolio: ~</span>
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setOpen(false);
+                      }}
+                      className="ml-auto text-muted hover:text-foreground"
+                      aria-label="Close terminal"
+                    >
+                      <X size={16} />
+                    </button>
+                  </div>
 
-          <div ref={scrollRef} className="h-72 overflow-y-auto px-4 py-4 font-mono text-sm leading-relaxed">
-            {lines.map((line, i) =>
-              line.kind === "in" ? (
-                <p key={i} className="text-foreground">
-                  <span className="text-sage">➜</span> <span className="text-accent">~</span> {line.text}
-                </p>
-              ) : (
-                <p key={i} className="text-muted whitespace-pre-wrap">
-                  {line.text}
-                </p>
-              )
+                  <div
+                    ref={scrollRef}
+                    className="h-72 overflow-y-auto px-4 py-4 font-mono text-sm leading-relaxed bg-background/95"
+                  >
+                    {lines.map((line, i) =>
+                      line.kind === "in" ? (
+                        <p key={i} className="text-foreground">
+                          <span className="text-sage">➜</span> <span className="text-accent">~</span>{" "}
+                          {line.text}
+                        </p>
+                      ) : (
+                        <p key={i} className="text-muted whitespace-pre-wrap">
+                          {line.text}
+                        </p>
+                      )
+                    )}
+                    <form onSubmit={onSubmit} className="flex items-center gap-2">
+                      <span className="text-sage">➜</span>
+                      <span className="text-accent">~</span>
+                      <input
+                        ref={inputRef}
+                        value={input}
+                        onChange={(e) => setInput(e.target.value)}
+                        className="flex-1 bg-transparent outline-none text-foreground placeholder:text-muted/40"
+                        placeholder="type `help`…"
+                        aria-label="Terminal input"
+                        autoComplete="off"
+                        spellCheck={false}
+                      />
+                    </form>
+                  </div>
+                </div>
+              </motion.div>
             )}
-            <form onSubmit={onSubmit} className="flex items-center gap-2">
-              <span className="text-sage">➜</span>
-              <span className="text-accent">~</span>
-              <input
-                ref={inputRef}
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                className="flex-1 bg-transparent outline-none text-foreground placeholder:text-muted/40"
-                placeholder="type `help`…"
-                aria-label="Terminal input"
-                autoComplete="off"
-                spellCheck={false}
-              />
-            </form>
-          </div>
-        </div>
-      </Reveal>
-    </section>
+          </AnimatePresence>,
+          document.body
+        )}
+    </>
   );
 }

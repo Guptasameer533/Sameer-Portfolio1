@@ -23,10 +23,10 @@ export default function Home() {
         <Skills />
         <HighScores />
         <Trophies />
-        <Terminal />
         <Contact />
       </main>
       <Footer />
+      <Terminal />
     </AchievementsProvider>
   );
 }
