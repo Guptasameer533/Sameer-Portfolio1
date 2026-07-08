@@ -6,7 +6,7 @@ import { ArrowDown, FileDown, Mail } from "lucide-react";
 import { siteConfig, typingPhrases } from "@/lib/data";
 import { GithubIcon, LinkedinIcon } from "./BrandIcons";
 import { TrackedLink } from "./AchievementSystem";
-import HeroGraph from "./HeroGraph";
+import CodeCard from "./CodeCard";
 
 function useTypewriter(phrases: string[]) {
   const [text, setText] = useState("");
@@ -153,8 +153,26 @@ export default function Hero() {
         </motion.div>
           </div>
 
-          <motion.div variants={item} className="hidden lg:block">
-            <HeroGraph />
+          <motion.div variants={item} className="hidden lg:block relative pr-4">
+            <CodeCard />
+
+            <div className="card absolute -left-20 top-6 -rotate-6 px-4 py-3 shadow-xl bg-surface">
+              <p className="hand text-lg leading-none">note to self</p>
+              <p className="font-mono text-xs mt-1.5 text-muted">
+                if it can race,
+                <br />
+                it will.
+              </p>
+            </div>
+
+            <div className="card absolute -left-14 -bottom-8 rotate-3 px-4 py-3 shadow-xl bg-surface">
+              <p className="hand text-lg leading-none">status</p>
+              <p className="font-mono text-xs mt-1.5 text-muted">
+                open to SWE roles
+                <br />
+                class of 2026
+              </p>
+            </div>
           </motion.div>
         </div>
 

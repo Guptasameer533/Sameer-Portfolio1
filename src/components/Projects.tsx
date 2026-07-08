@@ -2,8 +2,15 @@ import { ExternalLink } from "lucide-react";
 import { projects, siteConfig } from "@/lib/data";
 import { GithubIcon } from "./BrandIcons";
 import { TrackedLink } from "./AchievementSystem";
+import { KisanMitraVisual, NextFlowVisual, ResourceHubVisual } from "./ProjectVisuals";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
+
+const VISUALS: Record<string, React.ComponentType> = {
+  NextFlow: NextFlowVisual,
+  KisanMitra: KisanMitraVisual,
+  "Resource HUB": ResourceHubVisual,
+};
 
 export default function Projects() {
   return (
@@ -64,25 +71,38 @@ export default function Projects() {
 
               <p className="text-muted leading-relaxed mb-4">{project.description}</p>
 
-              <ul className="space-y-2 mb-5">
-                {project.points.map((point) => (
-                  <li key={point.slice(0, 32)} className="text-muted text-[0.95rem] leading-relaxed flex gap-2.5">
-                    <span className="text-accent mt-0.5 shrink-0">→</span>
-                    <span>{point}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="md:grid md:grid-cols-[1fr_330px] md:gap-8 md:items-center">
+                <div>
+                  <ul className="space-y-2 mb-5">
+                    {project.points.map((point) => (
+                      <li key={point.slice(0, 32)} className="text-muted text-[0.95rem] leading-relaxed flex gap-2.5">
+                        <span className="text-accent mt-0.5 shrink-0">→</span>
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
 
-              <div className="flex flex-wrap gap-2">
-                {project.stack.map((tech, ti) => (
-                  <span
-                    key={tech}
-                    className="sticker font-mono text-xs card rounded-md px-2.5 py-1 text-muted"
-                    style={{ transform: `rotate(${((ti % 3) - 1) * 1.2}deg)` }}
-                  >
-                    {tech}
-                  </span>
-                ))}
+                  <div className="flex flex-wrap gap-2">
+                    {project.stack.map((tech, ti) => (
+                      <span
+                        key={tech}
+                        className="sticker font-mono text-xs card rounded-md px-2.5 py-1 text-muted"
+                        style={{ transform: `rotate(${((ti % 3) - 1) * 1.2}deg)` }}
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                {(() => {
+                  const Visual = VISUALS[project.name];
+                  return Visual ? (
+                    <div className="hidden md:block">
+                      <Visual />
+                    </div>
+                  ) : null;
+                })()}
               </div>
             </article>
           </Reveal>

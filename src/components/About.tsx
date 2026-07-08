@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { about, education } from "@/lib/data";
+import { about, education, siteConfig } from "@/lib/data";
 import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 
@@ -8,7 +8,7 @@ export default function About() {
     <section id="about" className="mx-auto max-w-6xl px-5 sm:px-8 py-24">
       <SectionHeading label="the person behind the code" title="a bit about me" />
 
-      <div className="grid lg:grid-cols-[1fr_330px] gap-14 items-start">
+      <div className="grid lg:grid-cols-[1fr_320px] gap-12 items-start">
         <div>
           {about.paragraphs.map((p) => (
             <Reveal key={p.slice(0, 24)}>
@@ -30,9 +30,26 @@ export default function About() {
               </Reveal>
             ))}
           </div>
+        </div>
+
+        <div className="space-y-6">
+          <Reveal delay={0.1} className="mx-auto lg:mx-0 w-fit">
+            <div className="tape rotate-2 hover:rotate-0 transition-transform duration-300 bg-[#f3ecdd] p-3 pb-4 rounded-sm shadow-2xl w-64 sm:w-72">
+              <Image
+                src="/sameer.jpg"
+                alt="Sameer Gupta — Software Engineer"
+                width={963}
+                height={1280}
+                className="object-cover rounded-[2px]"
+              />
+              <p className="hand text-2xl text-center mt-3 leading-none" style={{ color: "#3d3426" }}>
+                me, probably debugging something
+              </p>
+            </div>
+          </Reveal>
 
           <Reveal delay={0.15}>
-            <div className="mt-10 card p-5 border-l-4 border-l-accent -rotate-[0.4deg]">
+            <div className="card p-5 border-l-4 border-l-accent rotate-[0.6deg]">
               <p className="hand text-xl mb-1">where i studied</p>
               <h3 className="font-semibold">{education.institute}</h3>
               <p className="text-muted text-sm mt-1">
@@ -44,23 +61,16 @@ export default function About() {
               </p>
             </div>
           </Reveal>
-        </div>
 
-        {/* polaroid */}
-        <Reveal delay={0.2} className="mx-auto lg:mx-0 lg:mt-6">
-          <div className="tape rotate-2 hover:rotate-0 transition-transform duration-300 bg-[#f3ecdd] p-3 pb-5 rounded-sm shadow-2xl w-64 sm:w-72">
-            <Image
-              src="/sameer.jpg"
-              alt="Sameer Gupta — Software Engineer"
-              width={963}
-              height={1280}
-              className="object-cover rounded-[2px]"
-            />
-            <p className="hand text-2xl text-[#3d3426] text-center mt-3 leading-none">
-              me, probably debugging something
-            </p>
-          </div>
-        </Reveal>
+          <Reveal delay={0.25}>
+            <div className="card p-5 -rotate-[0.8deg]">
+              <p className="hand text-xl mb-2">coordinates</p>
+              <p className="font-mono text-sm text-muted">📍 {siteConfig.location}</p>
+              <p className="font-mono text-sm text-muted mt-1.5">✉ {siteConfig.email}</p>
+              <p className="hand text-lg mt-3 leading-tight">replies fast — usually same day</p>
+            </div>
+          </Reveal>
+        </div>
       </div>
     </section>
   );
